@@ -79,13 +79,15 @@ mount $(echo "$DA_PART 1" | sed 's/ //g') /mnt/boot
 pacstrap /mnt base base-devel linux linux-firmware man-db man-pages texinfo zsh dosfstools os-prober mtools network-manager-applet networkmanager wpa_supplicant wireless_tools dialog sudo grub iwctl
 genfstab -U /mnt >> /mnt/etc/fstab
 
-clear
 read -p "[atenção] prestes a fazer chroot no sistema, lembre-se de rodar post_install.sh quando estiver lá. prosseguir? [s/N]: " chrootgo
 if ! [ $chrootgo = 's' ] && ! [ $chrootgo = 'S' ]
 then
     echo "[atenção] abortando..."
     exit
 fi
+
+cp -rfv post_install.sh /mnt/root/
+chmod a+x /mnt/root/post_install.sh
 arch-chroot /mnt /bin/bash
 
 echo "[sucesso] se post_install.sh resultou em sucesso, então o sistema já deve estar pronto para uso."

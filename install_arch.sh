@@ -76,7 +76,7 @@ mount $(echo "$DA_PART 3" | sed 's/ //g') /mnt
 mkdir /mnt/boot
 mount $(echo "$DA_PART 1" | sed 's/ //g') /mnt/boot
 
-pacstrap /mnt base base-devel linux linux-firmware man-db man-pages texinfo zsh dosfstools os-prober mtools network-manager-applet networkmanager wpa_supplicant wireless_tools dialog sudo grub iwctl
+pacstrap /mnt base base-devel linux linux-firmware man-db man-pages texinfo zsh dosfstools os-prober mtools network-manager-applet networkmanager wpa_supplicant wireless_tools dialog sudo grub iw
 genfstab -U /mnt >> /mnt/etc/fstab
 
 read -p "[atenção] prestes a fazer chroot no sistema, lembre-se de rodar post_install.sh quando estiver lá. prosseguir? [s/N]: " chrootgo
